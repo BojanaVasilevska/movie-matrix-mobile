@@ -48,7 +48,7 @@ function TabIcon({
   }
 
   return (
-    <View className="flex flex-col items-center justify-center h-full">
+    <View className="flex flex-col items-center justify-center h-full pb-1">
       <ImageBackground
         source={showHighlight ? require("../../../assets/images/highlight.png") : undefined}
         className="flex flex-row items-center justify-center min-w-[110px] h-16 rounded-full overflow-hidden px-4"
