@@ -12,19 +12,21 @@ interface Movie {
 
 const MovieCard = ({ id, poster_path, title, vote_average, release_date }: Movie) => {
   return (
-    <Link href={`/movie/${String(id)}` as any} asChild>
-      <TouchableOpacity className="w-[30%]">
-        <Image
-          source={{ 
-            uri: poster_path 
-              ? `https://image.tmdb.org/t/p/w500${poster_path}` 
-              : 'https://via.placeholder.com/600x4000/1a1a1a/FFFFFF.png' 
-          }}
-          className="w-full h-52 rounded-lg"
-          resizeMode="cover"
-        />
+    <Link href={{ pathname: '/movies/[id]', params: { id: String(id) } }} asChild>
+      <TouchableOpacity className="w-[30%] mb-4">
+        <View className="w-full aspect-[2/3] rounded-lg overflow-hidden bg-gray-800">
+          <Image
+            source={{ 
+              uri: poster_path 
+                ? `https://image.tmdb.org/t/p/w500${poster_path}` 
+                : 'https://via.placeholder.com/500x750/1a1a1a/FFFFFF?text=No+Image' 
+            }}
+            className="w-full h-full"
+            resizeMode="cover"
+          />
+        </View>
         
-        <Text className="text-sm font-bold text-white mt-2" numberOfLines={1}>
+        <Text className="text-sm font-semibold text-white mt-2" numberOfLines={2}>
           {title}
         </Text>
         
@@ -38,13 +40,12 @@ const MovieCard = ({ id, poster_path, title, vote_average, release_date }: Movie
           <Text className="text-xs font-medium text-blue-400 uppercase">
             Movie
           </Text>
-          {vote_average !== undefined && (
+          {vote_average !== undefined && vote_average > 0 && (
             <View className="flex-row items-center space-x-1">
               <Image
                 source={require('../../assets/icons/star.png')}
                 className="w-3 h-3"
                 resizeMode="contain"
-                style={{ tintColor: '#FFD700' }}
               />
               <Text className="text-xs text-gray-400 font-medium">
                 {vote_average.toFixed(1)}
