@@ -11,7 +11,7 @@ const _layout = () => {
           borderTopWidth: 0,
           borderTopColor: "#0F0D23",
           marginHorizontal: 20,
-          marginBottom: 20,
+          marginBottom: 50,
           position: "absolute",
           overflow: "hidden",
           elevation: 0,
